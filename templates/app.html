@@ -1,0 +1,20 @@
+<!doctype html><html lang="en" data-theme="{{ me.theme }}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="csrf" content="{{ csrf }}"><title>Tech Mahindra</title>
+<link rel="icon" href="/static/logo.svg"><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<aside class="side" id="side"><div class="brand"><img src="/static/logo.svg" width="34" height="34" alt=""><div><b>Employee Workspace</b><small>Operations · Projects · Team</small></div></div>
+<nav id="nav"></nav>
+<form method="post" action="/logout" class="sidefoot"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="navlink" type="submit"><span id="icLogout"></span>Log out</button></form></aside>
+<div class="main"><header class="top">
+<button class="iconbtn menu" id="menuBtn" aria-label="Menu"></button>
+<div class="clock"><div id="clockTime" class="time">--:--:--</div><div id="clockDate" class="muted small"></div></div>
+<button class="btn ghost sm" id="fmtBtn" title="Switch 12/24 hour">12/24h</button>
+<div class="grow"></div>
+<div class="bellwrap"><button class="iconbtn" id="bell" aria-label="Notifications"></button><span class="dot" id="dot" hidden></span><div class="card pop" id="notes" hidden></div></div>
+<div class="user"><span class="avatar" id="avatar"></span><div class="uname"><b id="uname"></b><small class="muted" id="uemail"></small></div></div></header>
+<div class="demobar">Workspace records are stored locally. This is an independent workspace application.</div>
+<main id="view" class="content"></main></div>
+<div id="toasts"></div>
+<script id="me" type="application/json">{{ me|tojson }}</script>
+<script id="tzs" type="application/json">{{ tzs|tojson }}</script>
+<script src="/static/app.js"></script></body></html>

@@ -1,0 +1,20 @@
+<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ 'Create account' if mode=='signup' else 'Sign in' }} - Employee Workspace</title>
+<link rel="icon" href="/static/logo.svg"><link rel="stylesheet" href="/static/style.css"></head>
+<body class="authbody"><main class="authwrap">
+<section class="authside"><img src="/static/logo.svg" width="56" height="56" alt="">
+<h1>Employee Workspace</h1><p>Organise daily tasks, project updates, attendance and team meetings in one place.</p>
+<p class="muted small">Independent workspace application. It is not an official company employee portal. Use your own account details.</p></section>
+<form class="card authcard" method="post" novalidate>
+<h2>{{ 'Create your workspace' if mode=='signup' else 'Welcome back' }}</h2>
+{% if error %}<div class="err" role="alert">{{ error }}</div>{% endif %}
+<input type="hidden" name="csrf" value="{{ csrf }}">
+{% if mode=='signup' %}<div class="f"><label for="name">Full name</label><input id="name" name="name" value="{{ name or '' }}" required maxlength="60" autocomplete="name"></div>{% endif %}
+<div class="f"><label for="email">Email</label><input id="email" name="email" type="email" value="{{ email or '' }}" required autocomplete="email"></div>
+<div class="f"><label for="password">Password</label><input id="password" name="password" type="password" required autocomplete="{{ 'new-password' if mode=='signup' else 'current-password' }}"></div>
+{% if mode=='signup' %}<div class="f"><label for="confirm">Confirm password</label><input id="confirm" name="confirm" type="password" required autocomplete="new-password"></div>
+<p class="muted small">At least 8 characters with a letter and a number.</p>
+<label class="check"><input type="checkbox" name="demo" value="1" checked> Set up workspace with example work items</label>{% endif %}
+<button class="btn block">{{ 'Create account' if mode=='signup' else 'Sign in' }}</button>
+<p class="muted small center">{% if mode=='signup' %}Already have an account? <a href="/login">Sign in</a>{% else %}New here? <a href="/signup">Create an account</a>{% endif %}</p>
+</form></main></body></html>
